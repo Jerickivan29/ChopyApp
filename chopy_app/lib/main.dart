@@ -1,3 +1,4 @@
+import 'package:chopy_app/homepage.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -23,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    const Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
+    const Homepage(),
     const Center(child: Text('Categories Page', style: TextStyle(fontSize: 24))),
     const Center(child: Text('Wishlist Page', style: TextStyle(fontSize: 24))),
     const Center(child: Text('Profile Page', style: TextStyle(fontSize: 24))),
@@ -33,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber,
+        backgroundColor: Color.fromARGB(255, 113,201,206),
         title: const Text('Home'),
         actions: [
           IconButton(
@@ -60,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: const <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 248, 126, 177),
+                color: Color.fromARGB(255, 113,201,206),
               ),
               child: Row(
                 children: [
@@ -138,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed, 
-        selectedItemColor: Colors.pink,
+        selectedItemColor: const Color.fromARGB(255, 113,201,206),
         items: const [
           BottomNavigationBarItem(
             label: "Home",
