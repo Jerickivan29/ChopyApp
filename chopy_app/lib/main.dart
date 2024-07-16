@@ -35,6 +35,26 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Colors.amber,
         title: const Text('Home'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              // Add your onPressed code here!
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () {
+              // Add your onPressed code here!
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              // Add your onPressed code here!
+            },
+          ),
+        ],
       ),
       body: _pages[_currentIndex],
       drawer: Drawer(
