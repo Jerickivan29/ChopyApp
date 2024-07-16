@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
@@ -23,10 +23,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Categories Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Wishlist Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Profile Page', style: TextStyle(fontSize: 24))),
+    const Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
+    const Center(child: Text('Categories Page', style: TextStyle(fontSize: 24))),
+    const Center(child: Text('Wishlist Page', style: TextStyle(fontSize: 24))),
+    const Center(child: Text('Profile Page', style: TextStyle(fontSize: 24))),
   ];
 
   @override
@@ -39,19 +39,16 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
-              // Add your onPressed code here!
             },
           ),
           IconButton(
-            icon: Icon(Icons.favorite),
+            icon: const Icon(Icons.favorite),
             onPressed: () {
-              // Add your onPressed code here!
             },
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
-              // Add your onPressed code here!
             },
           ),
         ],
@@ -69,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   CircleAvatar(
                     radius: 30,
-                    backgroundImage: NetworkImage('https://via.placeholder.com/150'), // Replace with your image URL
+                    backgroundImage: NetworkImage('https://via.placeholder.com/150'), 
                   ),
                   SizedBox(width: 10),
                   Column(
@@ -140,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        type: BottomNavigationBarType.fixed, // Ensure this is added
+        type: BottomNavigationBarType.fixed, 
         selectedItemColor: Colors.pink,
         items: const [
           BottomNavigationBarItem(
