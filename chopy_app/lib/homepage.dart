@@ -1,13 +1,15 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
 
+  final Color bgNavColor = const Color.fromARGB(255, 113, 201, 206);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 113, 201, 206),
+        backgroundColor: bgNavColor,
         title: const Text('Home'),
         actions: [
           IconButton(
@@ -24,18 +26,44 @@ class Homepage extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Text("Home Page"),
+      body: Container(
+        child: CarouselSlider(
+          items: [
+            "assets/images/car1.jpg",
+            "assets/images/car2.jpg",
+            "assets/images/car3.jpg"
+          ].map((i) {
+            return Container(
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: ClipRRect(
+                child: Image.asset(
+                  i,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover, 
+                ),
+              ),
+            );
+          }).toList(),
+          options: CarouselOptions(
+            height: 150,
+            viewportFraction: 1.0, 
+            enableInfiniteScroll: true, 
+            autoPlay: true,
+          ),
+        ),
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
-          children: const <Widget>[
+          children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 127, 134, 134),
+                color: bgNavColor,
               ),
-              child: Row(
+              child: const Row(
                 children: [
                   CircleAvatar(
                     radius: 30,
@@ -68,38 +96,38 @@ class Homepage extends StatelessWidget {
             ListTile(
               leading: Icon(
                 Icons.home,
-                color: Color.fromARGB(255, 113, 201, 206),
+                color: bgNavColor,
               ),
               title: Text(
                 'Home',
-                style: TextStyle(color: Color.fromARGB(255, 113, 201, 206)),
+                style: TextStyle(color: bgNavColor),
               ),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(Icons.shopping_bag),
               title: Text('Products'),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(Icons.star),
               title: Text('Featured'),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(Icons.favorite),
               title: Text('Wishlist'),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(Icons.list_alt),
               title: Text('Orders'),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(Icons.shopping_cart),
               title: Text('My Cart'),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(Icons.account_circle),
               title: Text('Profile'),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(Icons.logout),
               title: Text('Logout'),
             ),
