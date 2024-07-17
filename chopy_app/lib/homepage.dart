@@ -66,20 +66,12 @@ class Homepage extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
+              leading: Icon(Icons.home, color: Color.fromARGB(255, 113,201,206),),
+              title: Text('Home', style: TextStyle(color: Color.fromARGB(255, 113,201,206)),),
             ),
             ListTile(
               leading: Icon(Icons.shopping_bag),
               title: Text('Products'),
-            ),
-            ListTile(
-              leading: Icon(Icons.build),
-              title: Text('Components'),
-            ),
-            ListTile(
-              leading: Icon(Icons.pages),
-              title: Text('Pages'),
             ),
             ListTile(
               leading: Icon(Icons.star),
