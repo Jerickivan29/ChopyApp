@@ -7,39 +7,39 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 113,201,206),
-          title: const Text('Home'),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.favorite),
-              onPressed: () {
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.shopping_cart),
-              onPressed: () {
-              },
-            ),
-          ],
-        ),body: const Center(child: Text("Home Page")),
-        drawer: Drawer(
+        backgroundColor: const Color.fromARGB(255, 113, 201, 206),
+        title: const Text('Home'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.favorite),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: const Center(
+        child: Text("Home Page"),
+      ),
+      drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: const <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 113,201,206),
+                color: Color.fromARGB(255, 127, 134, 134),
               ),
               child: Row(
                 children: [
                   CircleAvatar(
                     radius: 30,
-                    backgroundImage: NetworkImage('https://via.placeholder.com/150'), 
+                    backgroundImage: AssetImage("assets/images/ID_PIC.jpg"),
                   ),
                   SizedBox(width: 10),
                   Column(
@@ -66,8 +66,14 @@ class Homepage extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home, color: Color.fromARGB(255, 113,201,206),),
-              title: Text('Home', style: TextStyle(color: Color.fromARGB(255, 113,201,206)),),
+              leading: Icon(
+                Icons.home,
+                color: Color.fromARGB(255, 113, 201, 206),
+              ),
+              title: Text(
+                'Home',
+                style: TextStyle(color: Color.fromARGB(255, 113, 201, 206)),
+              ),
             ),
             ListTile(
               leading: Icon(Icons.shopping_bag),
