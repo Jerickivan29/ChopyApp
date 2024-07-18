@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 
 class Categories extends StatelessWidget {
-  const Categories({super.key});
+  final Function(int) onBackTap;
+
+  const Categories({super.key, required this.onBackTap});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 113, 201, 206),
-        title: const Row(
+        title: Row(
           children: [
-            Icon(
-              Icons.chevron_left,
-              size: 30,
+            GestureDetector(
+              child: Icon(
+                Icons.chevron_left,
+                size: 30,
+              ),
+              onTap: () => onBackTap(0),
             ),
             Text('All Categories'),
           ],
@@ -137,7 +142,8 @@ class Categories extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0), // Adjust padding as needed
+      padding: const EdgeInsets.symmetric(
+          horizontal: 16.0, vertical: 8.0), // Adjust padding as needed
       child: Container(
         width: screenWidth * 0.9, // Use a percentage of the screen width
         decoration: BoxDecoration(
@@ -196,7 +202,8 @@ class Categories extends StatelessWidget {
                       SizedBox(height: 4),
                       Text(
                         subtitle,
-                        style: const TextStyle(fontSize: 14, color: Colors.white),
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.white),
                       ),
                       SizedBox(height: 8),
                       ElevatedButton(
@@ -223,5 +230,4 @@ class Categories extends StatelessWidget {
       ),
     );
   }
-
 }

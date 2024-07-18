@@ -2,7 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatelessWidget {
-  const Homepage({super.key});
+  final Function(int) onCategoryTap;
+
+  const Homepage({super.key, required this.onCategoryTap});
 
   final Color bgNavColor = const Color.fromARGB(255, 113, 201, 206);
   @override
@@ -13,7 +15,7 @@ class Homepage extends StatelessWidget {
         title: const Text('Home'),
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             onPressed: () {},
           ),
           IconButton(
@@ -21,7 +23,7 @@ class Homepage extends StatelessWidget {
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: const Icon(Icons.shopping_cart),
             onPressed: () {},
           ),
         ],
@@ -48,7 +50,7 @@ class Homepage extends StatelessWidget {
               ),
             ),
           ),
-          const HomeCategories(),
+          HomeCategories(onCategoryTap: onCategoryTap),
         ]),
       ),
       drawer: Drawer(
@@ -135,16 +137,18 @@ class Homepage extends StatelessWidget {
 }
 
 class HomeCategories extends StatelessWidget {
-  const HomeCategories({super.key});
+  final Function(int) onCategoryTap;
+
+  const HomeCategories({super.key, required this.onCategoryTap});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(40),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CategoryItem(
@@ -165,25 +169,28 @@ class HomeCategories extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 30,),
+          const SizedBox(
+            height: 30,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CategoryItem(
+              const CategoryItem(
                 image: "assets/images/home_category1.jpg",
                 category: "Grocery",
               ),
-              CategoryItem(
+              const CategoryItem(
                 image: "assets/images/home_category2.jpg",
                 category: "Toys",
               ),
-              CategoryItem(
+              const CategoryItem(
                 image: "assets/images/car1.jpg",
                 category: "Appliances",
               ),
               CategoryItem(
                 image: "assets/images/car2.jpg",
                 category: "More",
+                onTap: () => onCategoryTap(1),
               ),
             ],
           ),
@@ -196,23 +203,37 @@ class HomeCategories extends StatelessWidget {
 class CategoryItem extends StatelessWidget {
   final String image;
   final String category;
+  final VoidCallback? onTap;
 
   const CategoryItem({
     super.key,
     required this.image,
     required this.category,
+    this.onTap,
   });
+
+  final Color bgNavColor = Colors.blue;
 
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
 
-    return Column(children: [
-      CircleAvatar(
-        radius: (deviceWidth / 4) * 0.5 - 30,
-        backgroundImage: AssetImage(image),
-      ),
-      Text(category),
-    ]);
+    return GestureDetector(
+      onTap: onTap ?? () {},
+      child: Column(children: [
+        Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+                color: bgNavColor, width: 2), 
+          ),
+          child: CircleAvatar(
+            radius: (deviceWidth / 4) * 0.5 - 30,
+            backgroundImage: AssetImage(image),
+          ),
+        ),
+        Text(category),
+      ]),
+    );
   }
 }

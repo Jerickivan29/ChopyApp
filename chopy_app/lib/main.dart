@@ -19,28 +19,48 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
+  
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
+  
+  late List<Widget> _pages;
 
-  final List<Widget> _pages = [
-    const Homepage(),
-    const Categories(),
-    const Wishlist(),
-    const Profile(),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+      Homepage(onCategoryTap: (index) {
+        _onPageChanged(index);
+      }),
+      Categories(onBackTap: (index) {
+        _onPageChanged(index);
+      }),
+      const Wishlist(),
+      const Profile(),
+    ];
+  }
+
+  void _onPageChanged(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_currentIndex],
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        type: BottomNavigationBarType.fixed, 
-        selectedItemColor: const Color.fromARGB(255, 113,201,206),
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: const Color.fromARGB(255, 113, 201, 206),
         items: const [
           BottomNavigationBarItem(
             label: "Home",
@@ -59,12 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.account_circle),
           ),
         ],
-        onTap: (int index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+        onTap: _onPageChanged,
       ),
     );
   }
 }
+
