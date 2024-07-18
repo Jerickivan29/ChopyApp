@@ -144,7 +144,7 @@ class HomeCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(40),
+      margin: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -228,7 +228,7 @@ class CategoryItem extends StatelessWidget {
                 color: bgNavColor, width: 2), 
           ),
           child: CircleAvatar(
-            radius: (deviceWidth / 4) * 0.5 - 30,
+            radius: (deviceWidth / 4) * 0.5 - 15,
             backgroundImage: AssetImage(image),
           ),
         ),
