@@ -157,7 +157,7 @@ class HomeCategories extends StatelessWidget {
               ),
               CategoryItem(
                 image: "assets/images/home_category2.jpg",
-                category: "Furniture",
+                category: "Electronics",
               ),
               CategoryItem(
                 image: "assets/images/car1.jpg",
@@ -188,7 +188,7 @@ class HomeCategories extends StatelessWidget {
                 category: "Appliances",
               ),
               CategoryItem(
-                image: "assets/images/car2.jpg",
+                image: "assets/images/three-dots.png",
                 category: "More",
                 onTap: () => onCategoryTap(1),
               ),
