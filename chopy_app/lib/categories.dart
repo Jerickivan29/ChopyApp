@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:chopy_app/homepage.dart';
 
 class Categories extends StatelessWidget {
   final Function(int) onBackTap;
@@ -34,118 +35,40 @@ class Categories extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                    color: Color.fromARGB(255, 224, 223, 223), width: 1),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              buildImageButton(
-                                  context, 'assets/images/car1.jpg', 'Mobiles'),
-                              buildImageButton(context,
-                                  'assets/images/car1.jpg', 'Electronics'),
-                              buildImageButton(
-                                  context, 'assets/images/car1.jpg', 'Fashion'),
-                              buildImageButton(context,
-                                  'assets/images/car1.jpg', 'Furniture'),
-                            ],
-                          ),
-                          SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              buildImageButton(
-                                  context, 'assets/images/car1.jpg', 'Grocery'),
-                              buildImageButton(context,
-                                  'assets/images/car1.jpg', 'Appliances'),
-                              buildImageButton(
-                                  context, 'assets/images/car1.jpg', 'Toys'),
-                              buildImageButton(
-                                  context, 'assets/images/car1.jpg', 'Fashion'),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            buildCategoryCard('assets/images/car1.jpg', 'Sweatshirts',
-                'Collections', Colors.pink, context),
-            buildCategoryCard('assets/images/car1.jpg', 'Caps', 'Collections',
-                Colors.purple, context),
-            buildCategoryCard('assets/images/car1.jpg', 'Jacket', 'Collections',
-                Colors.pink, context),
-            buildCategoryCard('assets/images/car1.jpg', 'Tshirt', 'Collections',
-                Colors.purple, context),
-            buildCategoryCard('assets/images/car1.jpg', 'Casual Trouser',
-                'Collections', Colors.pink, context),
-            buildCategoryCard('assets/images/car1.jpg', 'Cargos', 'Collections',
-                Colors.purple, context),
-            buildCategoryCard('assets/images/car1.jpg', 'Sunglasess',
-                'Collections', Colors.pink, context),
+            HomeCategories(onCategoryTap: (int index) {
+              // Handle category tap
+            }),
+            OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Sweatshirts', subtitle: 'Collections', buttonColor: Colors.blue,),
+            OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Cap', subtitle: 'Collections', buttonColor: Colors.blue,),
+            OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Jackets', subtitle: 'Collections', buttonColor: Colors.blue,),
+            OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Tshirts', subtitle: 'Collections', buttonColor: Colors.blue,),
           ],
         ),
       ),
     );
   }
+}
 
-  Widget buildImageButton(
-      BuildContext context, String imagePath, String title) {
-    return GestureDetector(
-      onTap: () {
-        // Handle button click
-      },
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: Colors.blue, // Set the color of the border
-                width: 3, // Set the width of the border
-              ),
-            ),
-            child: ClipOval(
-              child: Image.asset(
-                imagePath,
-                width: 60,
-                height: 60,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          SizedBox(height: 8),
-          Text(
-            title,
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
-    );
-  }
+class OtherCategories extends StatelessWidget {
+  final String imagePath;
+  final String title;
+  final String subtitle;
+  final Color buttonColor;
 
-  Widget buildCategoryCard(String imagePath, String title, String subtitle,
-      Color buttonColor, BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+  const OtherCategories({
+    super.key,
+    required this.imagePath,
+    required this.title,
+    required this.subtitle,
+    required this.buttonColor,
+  });
 
+  @override
+  Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-          horizontal: 16.0, vertical: 8.0), // Adjust padding as needed
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Container(
-        width: screenWidth * 0.9, // Use a percentage of the screen width
+        width: MediaQuery.of(context).size.width * 0.9,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -154,13 +77,12 @@ class Categories extends StatelessWidget {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 2,
               blurRadius: 5,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
         child: Stack(
           children: [
-            // Positioned.fill makes the image cover the entire card
             Positioned.fill(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
@@ -170,7 +92,6 @@ class Categories extends StatelessWidget {
                 ),
               ),
             ),
-            // Add a semi-transparent overlay for better text readability
             Positioned.fill(
               child: Container(
                 decoration: BoxDecoration(
@@ -179,14 +100,11 @@ class Categories extends StatelessWidget {
                 ),
               ),
             ),
-            // Card content
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(
-                mainAxisAlignment:
-                    MainAxisAlignment.end, // Aligns content to the right
-                crossAxisAlignment:
-                    CrossAxisAlignment.center, // Centers content vertically
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -195,30 +113,34 @@ class Categories extends StatelessWidget {
                       Text(
                         title,
                         style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Text(
                         subtitle,
-                        style:
-                            const TextStyle(fontSize: 14, color: Colors.white),
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       ElevatedButton(
                         onPressed: () {
                           // Handle button click
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              buttonColor, // Set the background color of the button
+                          backgroundColor: buttonColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
-                        child: const Text('SHOP NOW',
-                            style: TextStyle(color: Colors.white)),
+                        child: const Text(
+                          'SHOP NOW',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ],
                   ),
