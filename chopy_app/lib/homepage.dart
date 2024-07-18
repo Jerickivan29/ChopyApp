@@ -26,34 +26,30 @@ class Homepage extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        child: CarouselSlider(
-          items: [
-            "assets/images/car1.jpg",
-            "assets/images/car2.jpg",
-            "assets/images/car3.jpg"
-          ].map((i) {
-            return Container(
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: ClipRRect(
-                child: Image.asset(
+      body: SingleChildScrollView(
+        child: Column(children: [
+          Container(
+            child: CarouselSlider(
+              items: [
+                "assets/images/car1.jpg",
+                "assets/images/car2.jpg",
+                "assets/images/car3.jpg"
+              ].map((i) {
+                return Image.asset(
                   i,
                   width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.cover, 
-                ),
+                  fit: BoxFit.cover,
+                );
+              }).toList(),
+              options: CarouselOptions(
+                height: 150,
+                viewportFraction: 1.0,
+                autoPlay: true,
               ),
-            );
-          }).toList(),
-          options: CarouselOptions(
-            height: 150,
-            viewportFraction: 1.0, 
-            enableInfiniteScroll: true, 
-            autoPlay: true,
+            ),
           ),
-        ),
+          const HomeCategories(),
+        ]),
       ),
       drawer: Drawer(
         child: ListView(
@@ -135,5 +131,88 @@ class Homepage extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class HomeCategories extends StatelessWidget {
+  const HomeCategories({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(40),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CategoryItem(
+                image: "assets/images/home_category1.jpg",
+                category: "Mobiles",
+              ),
+              CategoryItem(
+                image: "assets/images/home_category2.jpg",
+                category: "Furniture",
+              ),
+              CategoryItem(
+                image: "assets/images/car1.jpg",
+                category: "Fashion",
+              ),
+              CategoryItem(
+                image: "assets/images/car2.jpg",
+                category: "Furniture",
+              ),
+            ],
+          ),
+          SizedBox(height: 30,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CategoryItem(
+                image: "assets/images/home_category1.jpg",
+                category: "Grocery",
+              ),
+              CategoryItem(
+                image: "assets/images/home_category2.jpg",
+                category: "Toys",
+              ),
+              CategoryItem(
+                image: "assets/images/car1.jpg",
+                category: "Appliances",
+              ),
+              CategoryItem(
+                image: "assets/images/car2.jpg",
+                category: "More",
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CategoryItem extends StatelessWidget {
+  final String image;
+  final String category;
+
+  const CategoryItem({
+    super.key,
+    required this.image,
+    required this.category,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+
+    return Column(children: [
+      CircleAvatar(
+        radius: (deviceWidth / 4) * 0.5 - 30,
+        backgroundImage: AssetImage(image),
+      ),
+      Text(category),
+    ]);
   }
 }
