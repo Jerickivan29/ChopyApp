@@ -39,8 +39,12 @@ class _MyHomePageState extends State<MyHomePage> {
       Categories(onBackTap: (index) {
         _onPageChanged(index);
       }),
-      const Wishlist(),
-      const Profile(),
+      Wishlist(onBackTap: (index) {
+        _onPageChanged(index);
+      }),
+      Profile(onBackTap: (index) {
+        _onPageChanged(index);
+      }),
     ];
   }
 

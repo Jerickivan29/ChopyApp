@@ -1,27 +1,37 @@
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({super.key});
+  final Function(int) onBackTap;
+
+  const Profile({super.key, required this.onBackTap});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 113,201,206),
-          title: const Row(
-            children: [
-              Icon(Icons.chevron_left, size: 30,),
-              Text('Profile'),
-            ],
-          ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.search, ),
-              onPressed: () {
-              },
+        backgroundColor: Color.fromARGB(255, 113, 201, 206),
+        title: Row(
+          children: [
+            GestureDetector(
+              child: const Icon(
+                Icons.chevron_left,
+                size: 30,
+              ),
+              onTap: () => onBackTap(0),
             ),
+            Text('Profile'),
           ],
-        ),body: const Center(child: Text("Profile")),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.search,
+            ),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: const Center(child: Text("Profile")),
     );
   }
 }

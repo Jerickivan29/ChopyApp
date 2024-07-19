@@ -51,6 +51,8 @@ class Homepage extends StatelessWidget {
             ),
           ),
           HomeCategories(onCategoryTap: onCategoryTap),
+          const SalesBanner(),
+          const PopularProducts(),
         ]),
       ),
       drawer: Drawer(
@@ -224,8 +226,7 @@ class CategoryItem extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(
-                color: bgNavColor, width: 2), 
+            border: Border.all(color: bgNavColor, width: 2),
           ),
           child: CircleAvatar(
             radius: (deviceWidth / 4) * 0.5 - 15,
@@ -234,6 +235,125 @@ class CategoryItem extends StatelessWidget {
         ),
         Text(category),
       ]),
+    );
+  }
+}
+
+class SalesBanner extends StatelessWidget {
+  const SalesBanner({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(0),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: ClipRRect(
+                child: Image.asset(
+                  "assets/images/car1.jpg",
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Positioned.fill(
+              child: Container(),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Sales end in",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        "14hrs 02Mins 55Secs",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PopularProducts extends StatelessWidget {
+  const PopularProducts({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(20),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Most Popular",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text("View All >")
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          CarouselSlider(
+            items: [
+              "assets/images/car1.jpg",
+              "assets/images/car2.jpg",
+              "assets/images/car3.jpg"
+            ].map((i) {
+              return Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: Image.asset(
+                  i,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover,
+                ),
+              );
+            }).toList(),
+            options: CarouselOptions(
+              height: 150,
+              viewportFraction: 0.5,
+
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

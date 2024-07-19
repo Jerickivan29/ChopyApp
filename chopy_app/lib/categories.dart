@@ -10,17 +10,17 @@ class Categories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 113, 201, 206),
+        backgroundColor: const Color.fromARGB(255, 113, 201, 206),
         title: Row(
           children: [
             GestureDetector(
-              child: Icon(
+              child: const Icon(
                 Icons.chevron_left,
                 size: 30,
               ),
               onTap: () => onBackTap(0),
             ),
-            Text('All Categories'),
+            const Text('All Categories'),
           ],
         ),
         actions: [
@@ -32,12 +32,10 @@ class Categories extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           children: [
-            HomeCategories(onCategoryTap: (int index) {
-              // Handle category tap
-            }),
+            CategorySection(),
             OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Sweatshirts', subtitle: 'Collections', buttonColor: Colors.blue,),
             OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Cap', subtitle: 'Collections', buttonColor: Colors.blue,),
             OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Jackets', subtitle: 'Collections', buttonColor: Colors.blue,),
@@ -129,7 +127,7 @@ class OtherCategories extends StatelessWidget {
                       const SizedBox(height: 8),
                       ElevatedButton(
                         onPressed: () {
-                          // Handle button click
+                          
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: buttonColor,
@@ -153,3 +151,67 @@ class OtherCategories extends StatelessWidget {
     );
   }
 }
+
+class CategorySection extends StatelessWidget {
+
+  const CategorySection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(20),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CategoryItem(
+                image: "assets/images/home_category1.jpg",
+                category: "Mobiles",
+              ),
+              CategoryItem(
+                image: "assets/images/home_category2.jpg",
+                category: "Electronics",
+              ),
+              CategoryItem(
+                image: "assets/images/car1.jpg",
+                category: "Fashion",
+              ),
+              CategoryItem(
+                image: "assets/images/car2.jpg",
+                category: "Furniture",
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const CategoryItem(
+                image: "assets/images/home_category1.jpg",
+                category: "Grocery",
+              ),
+              const CategoryItem(
+                image: "assets/images/home_category2.jpg",
+                category: "Toys",
+              ),
+              const CategoryItem(
+                image: "assets/images/car1.jpg",
+                category: "Appliances",
+              ),
+              CategoryItem(
+                image: "assets/images/car3.jpg",
+                category: "Fashion",
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+  
+
