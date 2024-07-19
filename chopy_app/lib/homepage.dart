@@ -335,21 +335,41 @@ class PopularProducts extends StatelessWidget {
             items: [
               "assets/images/car1.jpg",
               "assets/images/car2.jpg",
-              "assets/images/car3.jpg"
+              "assets/images/car1.jpg"
             ].map((i) {
               return Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                child: Image.asset(
-                  i,
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.cover,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey, width: 1.0),
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      i,
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.cover,
+                      height: 200,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 5.0),
+                      child: Text("Jacket"),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 5.0),
+                      child: Text(
+                        "P12,092",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
                 ),
               );
             }).toList(),
             options: CarouselOptions(
-              height: 150,
-              viewportFraction: 0.5,
-
+              height: 250,
+              viewportFraction: 0.55,
             ),
           ),
         ],
