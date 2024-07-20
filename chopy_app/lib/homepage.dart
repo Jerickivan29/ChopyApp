@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:chopy_app/login.dart';
 import 'package:flutter/material.dart';
 import 'package:chopy_app/products_page.dart';
+import 'package:chopy_app/products_category.dart';
 import 'dart:async';
 
 class Homepage extends StatelessWidget {
@@ -240,7 +241,14 @@ class CategoryItem extends StatelessWidget {
     double deviceWidth = MediaQuery.of(context).size.width;
 
     return GestureDetector(
-      onTap: onTap ?? () {},
+      onTap: onTap ?? () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductsCategory(category),
+          ),
+        );
+      },
       child: Column(children: [
         Container(
           decoration: BoxDecoration(

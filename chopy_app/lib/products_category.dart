@@ -2,12 +2,13 @@ import 'package:chopy_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:chopy_app/product_list.dart';
 
-class ProductsPage extends StatelessWidget {
-  const ProductsPage({super.key});
+class ProductsCategory extends StatelessWidget {
+  const ProductsCategory(this.category, {super.key});
+  final String category;
 
   @override
   Widget build(BuildContext context) {
-    List<ProductList> allProducts = products;
+    List<ProductList> productsByCategory = getProductByCategory(category);
 
     return Scaffold(
       appBar: AppBar(
@@ -26,7 +27,7 @@ class ProductsPage extends StatelessWidget {
                 ),
               ),
             ),
-            const Text('All Products'),
+            Text(category),
           ],
         ),
         automaticallyImplyLeading: false,
@@ -35,7 +36,7 @@ class ProductsPage extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         child: Column(
           children: [
-            for (var product in allProducts)
+            for (var product in productsByCategory)
               ProductTile(
                   product.name,
                   product.price.toString(),
