@@ -33,9 +33,9 @@ class Homepage extends StatelessWidget {
           Container(
             child: CarouselSlider(
               items: [
-                "assets/images/car1.jpg",
-                "assets/images/car2.jpg",
-                "assets/images/car3.jpg"
+                "assets/images/banner1.jpg",
+                "assets/images/banner2.jpg",
+                "assets/images/banner3.jpg"
               ].map((i) {
                 return Image.asset(
                   i,
@@ -53,6 +53,8 @@ class Homepage extends StatelessWidget {
           HomeCategories(onCategoryTap: onCategoryTap),
           const SalesBanner(),
           const PopularProducts(),
+          const DiscountedProducts(),
+          const PopularItemSection(),
         ]),
       ),
       drawer: Drawer(
@@ -154,19 +156,19 @@ class HomeCategories extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CategoryItem(
-                image: "assets/images/home_category1.jpg",
+                image: "assets/images/mobile.jpg",
                 category: "Mobiles",
               ),
               CategoryItem(
-                image: "assets/images/home_category2.jpg",
+                image: "assets/images/electronics.jpg",
                 category: "Electronics",
               ),
               CategoryItem(
-                image: "assets/images/car1.jpg",
+                image: "assets/images/fashion.jpg",
                 category: "Fashion",
               ),
               CategoryItem(
-                image: "assets/images/car2.jpg",
+                image: "assets/images/furniture.jpg",
                 category: "Furniture",
               ),
             ],
@@ -178,15 +180,15 @@ class HomeCategories extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const CategoryItem(
-                image: "assets/images/home_category1.jpg",
+                image: "assets/images/grocery.jpeg",
                 category: "Grocery",
               ),
               const CategoryItem(
-                image: "assets/images/home_category2.jpg",
+                image: "assets/images/toys.jpg",
                 category: "Toys",
               ),
               const CategoryItem(
-                image: "assets/images/car1.jpg",
+                image: "assets/images/appliances.jpg",
                 category: "Appliances",
               ),
               CategoryItem(
@@ -318,7 +320,7 @@ class PopularProducts extends StatelessWidget {
       margin: const EdgeInsets.all(20),
       child: Column(
         children: [
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -328,14 +330,15 @@ class PopularProducts extends StatelessWidget {
               Text("View All >")
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           CarouselSlider(
             items: [
-              "assets/images/car1.jpg",
-              "assets/images/car2.jpg",
-              "assets/images/car1.jpg"
+              "assets/images/jacket1.jpeg",
+              "assets/images/jacket2.jpeg",
+              "assets/images/jacket3.jpeg",
+              "assets/images/jacket4.jpeg"
             ].map((i) {
               return Container(
                 decoration: BoxDecoration(
@@ -352,11 +355,11 @@ class PopularProducts extends StatelessWidget {
                       fit: BoxFit.cover,
                       height: 200,
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 5.0),
                       child: Text("Jacket"),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 5.0),
                       child: Text(
                         "P12,092",
@@ -371,6 +374,155 @@ class PopularProducts extends StatelessWidget {
               height: 250,
               viewportFraction: 0.55,
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DiscountedProducts extends StatelessWidget {
+  const DiscountedProducts({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            width: 1.0,
+            color: Colors.grey.withOpacity(0.5),
+          ),
+          bottom: BorderSide(width: 1.0, color: Colors.grey.withOpacity(0.5)),
+        ),
+      ),
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          DiscountedProductItem("Headphones",
+              "assets/images/headphone.jpg", "Up to 80% off"),
+          DiscountedProductItem("Mobile Phones",
+              "assets/images/phone.jpg", "Up to 50% off"),
+          DiscountedProductItem(
+              "Laptops", "assets/images/laptop1.jpg", "Up to 30% off"),
+        ],
+      ),
+    );
+  }
+}
+
+class DiscountedProductItem extends StatelessWidget {
+  const DiscountedProductItem(this.name, this.image, this.discountText,
+      {super.key});
+
+  final String name;
+  final String image;
+  final String discountText;
+
+  @override
+  Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.black),
+      ),
+      child: Column(
+        children: [
+          Image.asset(image, width: (deviceWidth / 3) - 20),
+          Text(name),
+          Text(discountText,
+              style: const TextStyle(fontWeight: FontWeight.bold)),
+        ],
+      ),
+    );
+  }
+}
+
+class PopularItemSection extends StatelessWidget {
+  const PopularItemSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+      child: Column(
+        children: [
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Popular Items",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text("View All >")
+            ],
+          ),
+          PopularItem("Swing fan", "P2000", "assets/images/home_category1.jpg",
+              "P1299", "400mm, Blue tone", "20% off")
+        ],
+      ),
+    );
+  }
+}
+
+class PopularItem extends StatelessWidget {
+  const PopularItem(this.name, this.price, this.image, this.discountedPrice,
+      this.shortDescription, this.percent,
+      {super.key});
+
+  final String name;
+  final String image;
+  final String discountedPrice;
+  final String shortDescription;
+  final String price;
+  final String percent;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Image.asset(
+            image,
+            width: 100,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                name,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.left,
+              ),
+              Text(
+                shortDescription,
+                style: TextStyle(color: Colors.pink),
+              ),
+              SizedBox(height: 5),
+              Row(
+                children: [
+                  Text(
+                    percent,
+                    style: TextStyle(color: Colors.green),
+                  ),
+                  SizedBox(width: 5),
+                  Text(price),
+                    SizedBox(width: 3),
+                  Text(discountedPrice)
+                ],
+              )
+            ],
+          ),
+          const CircleAvatar(
+            radius: 30,
+            backgroundImage: AssetImage("assets/images/ID_PIC.jpg"),
           ),
         ],
       ),
