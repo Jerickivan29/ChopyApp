@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:chopy_app/login.dart';
 import 'package:flutter/material.dart';
+import 'package:chopy_app/products_page.dart';
 import 'dart:async';
 
 class Homepage extends StatelessWidget {
@@ -107,9 +109,17 @@ class Homepage extends StatelessWidget {
                 style: TextStyle(color: bgNavColor),
               ),
             ),
-            const ListTile(
-              leading: Icon(Icons.shopping_bag),
-              title: Text('Products'),
+            GestureDetector(
+              child: const ListTile(
+                leading: Icon(Icons.shopping_bag),
+                title: Text('Products'),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProductsPage()),
+                );
+              },
             ),
             const ListTile(
               leading: Icon(Icons.star),
@@ -131,9 +141,17 @@ class Homepage extends StatelessWidget {
               leading: Icon(Icons.account_circle),
               title: Text('Profile'),
             ),
-            const ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Logout'),
+            GestureDetector(
+              child: const ListTile(
+                leading: Icon(Icons.logout),
+                title: Text('Logout'),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+              },
             ),
           ],
         ),
@@ -309,7 +327,6 @@ class _SalesBannerState extends State<SalesBanner> {
                 ),
               ),
             ),
-            
             Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
@@ -524,13 +541,8 @@ class PopularItemSection extends StatelessWidget {
               ],
             ),
           ),
-          const PopularItem(
-              "Swing fan",
-              "P2000",
-              "assets/images/fan.jpg",
-              "P1299",
-              "400mm, Blue tone",
-              "20% off"),
+          const PopularItem("Swing fan", "P2000", "assets/images/fan.jpg",
+              "P1299", "400mm, Blue tone", "20% off"),
           const PopularItem(
               "Oneplus Nord",
               "P2000",
@@ -538,13 +550,8 @@ class PopularItemSection extends StatelessWidget {
               "P1299",
               "400mm, Blue tone",
               "20% off"),
-          const PopularItem(
-              "sdfdsd fan",
-              "P2000",
-              "assets/images/laptop2.jpeg",
-              "P1299",
-              "400mm, Blue tone",
-              "20% off"),
+          const PopularItem("sdfdsd fan", "P2000", "assets/images/laptop2.jpeg",
+              "P1299", "400mm, Blue tone", "20% off"),
         ],
       ),
     );

@@ -10,7 +10,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Profile(
         onBackTap: (value) {
-          // Handle the back tap action here
           print('Back tapped with value: $value');
         },
       ),
@@ -25,10 +24,8 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Get the screen width
     final screenWidth = MediaQuery.of(context).size.width;
 
-    // Adjust button size based on screen width
     final buttonSize = screenWidth < 600 ? Size(120, 120) : Size(150, 150);
 
     return Scaffold(
@@ -36,7 +33,7 @@ class Profile extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            onBackTap(1); // Call the onBackTap function with a value
+            onBackTap(1);
           },
         ),
         title: Text('Profile'),
@@ -44,7 +41,6 @@ class Profile extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.more_vert),
             onPressed: () {
-              // Handle more options press
             },
           ),
         ],
@@ -55,11 +51,10 @@ class Profile extends StatelessWidget {
           child: Column(
             children: [
               ProfileSection(),
-              SizedBox(height: 30), // Add space between profile and buttons
-              BoxSection('Order', Icons.add_box_outlined, 'Wishlist', Icons.favorite_border_outlined, buttonSize),// Pass buttonSize to BoxSection
-              SizedBox(height: 16), // Add space between rows
-              BoxSection('Coupons', Icons.card_giftcard, 'Help Center', Icons.headphones, buttonSize), // Pass buttonSize to BoxSection
-              SizedBox(height: 30), // Add space before account settings
+              SizedBox(height: 30), 
+              BoxSection('Order', Icons.add_box_outlined, 'Wishlist', Icons.favorite_border_outlined, buttonSize),
+              BoxSection('Coupons', Icons.card_giftcard, 'Help Center', Icons.headphones, buttonSize), 
+              SizedBox(height: 30),
               AccountSet(),
             ],
           ),
@@ -82,7 +77,7 @@ class ProfileSection extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 40,
-              backgroundImage: AssetImage("assets/images/ID_PIC.jpg"), // Replace with your image URL
+              backgroundImage: AssetImage("assets/images/ID_PIC.jpg"), 
             ),
             SizedBox(width: 16),
             Expanded(
@@ -109,7 +104,6 @@ class ProfileSection extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.edit, color: Colors.pink),
               onPressed: () {
-                // Handle edit button press
               },
             ),
           ],
@@ -136,38 +130,36 @@ class BoxSection extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: () {
-            // Handle Order button press
           },
           style: ElevatedButton.styleFrom(
-            minimumSize: buttonSize, // Use media query size
+            minimumSize: buttonSize,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10), // No rounded corners
+              borderRadius: BorderRadius.circular(10),
             ),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(ficon, size: 40, color: Colors.pink), // Adjust size if needed
-              SizedBox(height: 8), // Space between icon and text
+              Icon(ficon, size: 40, color: Colors.pink), 
+              SizedBox(height: 8), 
               Text(ftext),
             ],
           ),
         ),
         ElevatedButton(
           onPressed: () {
-            // Handle Wishlist button press
           },
           style: ElevatedButton.styleFrom(
-            minimumSize: buttonSize, // Use media query size
+            minimumSize: buttonSize, 
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10), // No rounded corners
+              borderRadius: BorderRadius.circular(10),
             ),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(sicon, size: 40, color: Colors.pink), // Adjust size if needed
-              SizedBox(height: 8), // Space between icon and text
+              Icon(sicon, size: 40, color: Colors.pink), 
+              SizedBox(height: 8),
               Text(stext),
             ],
           ),
@@ -186,36 +178,33 @@ class AccountSet extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: () {
-            // Handle Edit Profile button press
           },
           style: ElevatedButton.styleFrom(
-            minimumSize: Size(double.infinity, 50), // Full width button
+            minimumSize: Size(double.infinity, 50),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
           ),
           child: Text('Edit Profile'),
         ),
-        SizedBox(height: 12), // Space between buttons
+        SizedBox(height: 12),
         ElevatedButton(
           onPressed: () {
-            // Handle Save Address button press
           },
           style: ElevatedButton.styleFrom(
-            minimumSize: Size(double.infinity, 50), // Full width button
+            minimumSize: Size(double.infinity, 50),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
           ),
           child: Text('Save Address'),
         ),
-        SizedBox(height: 12), // Space between buttons
+        SizedBox(height: 12),
         ElevatedButton(
           onPressed: () {
-            // Handle Log Out button press
           },
           style: ElevatedButton.styleFrom(
-            minimumSize: Size(double.infinity, 50), // Full width button
+            minimumSize: Size(double.infinity, 50),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
