@@ -31,7 +31,7 @@ class Categories extends StatelessWidget {
             onPressed: () {},
           ),
         ],
-      ),
+      automaticallyImplyLeading: false,),
       body: const SingleChildScrollView(
         child: Column(
           children: [

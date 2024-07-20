@@ -1,21 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Profile(
-        onBackTap: (value) {
-          print('Back tapped with value: $value');
-        },
-      ),
-    );
-  }
-}
 
 class Profile extends StatelessWidget {
   final Function(int) onBackTap;
@@ -31,9 +15,9 @@ class Profile extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.chevron_left),
           onPressed: () {
-            onBackTap(1);
+            onBackTap(0);
           },
         ),
         title: Text('Profile'),
@@ -44,7 +28,7 @@ class Profile extends StatelessWidget {
             },
           ),
         ],
-      ),
+      automaticallyImplyLeading: false,),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(16.0),

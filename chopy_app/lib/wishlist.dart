@@ -36,7 +36,7 @@ class Wishlist extends StatelessWidget {
             onPressed: () {},
           ),
         ],
-      ),
+      automaticallyImplyLeading: false,),
       body: SingleChildScrollView(
         child: Column(
           children: const [

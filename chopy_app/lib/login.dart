@@ -1,11 +1,8 @@
 import 'package:chopy_app/main.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(LoginPage());
-}
 
-class LoginPage extends StatelessWidget {
+class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(debugShowCheckedModeBanner: false,
