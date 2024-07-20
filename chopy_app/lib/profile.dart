@@ -55,7 +55,7 @@ class Profile extends StatelessWidget {
           child: Column(
             children: [
               ProfileSection(),
-              SizedBox(height: 30), // Add space between profile and buttons
+              SizedBox(height: 30), // Add space between profile and buttons 
               BoxSection('Order', Icons.add_box_outlined, 'Wishlist', Icons.favorite_border_outlined, buttonSize),// Pass buttonSize to BoxSection
               SizedBox(height: 16), // Add space between rows
               BoxSection('Coupons', Icons.card_giftcard, 'Help Center', Icons.headphones, buttonSize), // Pass buttonSize to BoxSection
