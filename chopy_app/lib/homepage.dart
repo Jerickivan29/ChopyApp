@@ -10,6 +10,7 @@ class Homepage extends StatelessWidget {
   const Homepage({super.key, required this.onCategoryTap});
 
   final Color bgNavColor = const Color.fromARGB(255, 113, 201, 206);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,24 +34,22 @@ class Homepage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(children: [
-          Container(
-            child: CarouselSlider(
-              items: [
-                "assets/images/banner1.jpg",
-                "assets/images/banner2.jpg",
-                "assets/images/banner3.jpg"
-              ].map((i) {
-                return Image.asset(
-                  i,
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.cover,
-                );
-              }).toList(),
-              options: CarouselOptions(
-                height: 150,
-                viewportFraction: 1.0,
-                autoPlay: true,
-              ),
+          CarouselSlider(
+            items: [
+              "assets/images/banner1.jpg",
+              "assets/images/banner2.jpg",
+              "assets/images/banner3.jpg"
+            ].map((i) {
+              return Image.asset(
+                i,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.cover,
+              );
+            }).toList(),
+            options: CarouselOptions(
+              height: 150,
+              viewportFraction: 1.0,
+              autoPlay: true,
             ),
           ),
           HomeCategories(onCategoryTap: onCategoryTap),
@@ -79,7 +78,7 @@ class Homepage extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         'Your Name',
                         style: TextStyle(
@@ -117,7 +116,9 @@ class Homepage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ProductsPage()),
+                  MaterialPageRoute(
+                    builder: (context) => const ProductsPage(),
+                  ),
                 );
               },
             ),

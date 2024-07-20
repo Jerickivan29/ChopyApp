@@ -36,7 +36,7 @@ class Categories extends StatelessWidget {
         child: Column(
           children: [
             CategorySection(),
-            OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Sweatshirts', subtitle: 'Collections', buttonColor: Colors.blue,),
+            OtherCategories(imagePath: 'assets/images/categ2.jpg', title: 'Sweatshirts', subtitle: 'Collections', buttonColor: Colors.blue,),
             OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Cap', subtitle: 'Collections', buttonColor: Colors.blue,),
             OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Jackets', subtitle: 'Collections', buttonColor: Colors.blue,),
             OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Tshirts', subtitle: 'Collections', buttonColor: Colors.blue,),
@@ -94,7 +94,7 @@ class OtherCategories extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: Colors.black.withOpacity(0.4),
+                
                 ),
               ),
             ),
