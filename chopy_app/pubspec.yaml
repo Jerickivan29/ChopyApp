@@ -95,6 +95,8 @@ flutter:
     - assets/images/iphone3.jpeg
     - assets/images/wire.jpg
     - assets/images/laptop3.jpeg
+    - assets/images/categ1.jpg
+    - assets/images/categ2.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
