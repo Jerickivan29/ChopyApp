@@ -31,18 +31,20 @@ class ProductsPage extends StatelessWidget {
         ),
         automaticallyImplyLeading: false,
       ),
-      body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-        child: Column(
-          children: [
-            for (var product in allProducts)
-              ProductTile(
-                  product.name,
-                  product.price.toString(),
-                  product.discountedPrice.toString(),
-                  product.percent,
-                  product.imagePath)
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          child: Column(
+            children: [
+              for (var product in allProducts)
+                ProductTile(
+                    product.name,
+                    product.price.toString(),
+                    product.discountedPrice.toString(),
+                    product.percent,
+                    product.imagePath)
+            ],
+          ),
         ),
       ),
     );

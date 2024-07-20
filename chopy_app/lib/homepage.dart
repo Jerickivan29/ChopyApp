@@ -3,7 +3,10 @@ import 'package:chopy_app/login.dart';
 import 'package:flutter/material.dart';
 import 'package:chopy_app/products_page.dart';
 import 'package:chopy_app/products_category.dart';
+import 'package:chopy_app/product_list.dart';
 import 'dart:async';
+
+import 'package:flutter/widgets.dart';
 
 class Homepage extends StatelessWidget {
   final Function(int) onCategoryTap;
@@ -55,7 +58,7 @@ class Homepage extends StatelessWidget {
           ),
           HomeCategories(onCategoryTap: onCategoryTap),
           const SalesBanner(),
-          const PopularProducts(),
+          PopularProducts(),
           const DiscountedProducts(),
           const PopularItemSection(),
           const TopSelectionSection(),
@@ -241,14 +244,15 @@ class CategoryItem extends StatelessWidget {
     double deviceWidth = MediaQuery.of(context).size.width;
 
     return GestureDetector(
-      onTap: onTap ?? () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProductsCategory(category),
-          ),
-        );
-      },
+      onTap: onTap ??
+          () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProductsCategory(category),
+              ),
+            );
+          },
       child: Column(children: [
         Container(
           decoration: BoxDecoration(
@@ -392,7 +396,9 @@ class CountdownText extends StatelessWidget {
 }
 
 class PopularProducts extends StatelessWidget {
-  const PopularProducts({super.key});
+  PopularProducts({super.key});
+
+  final List<ProductList> getJackets = getProductByCategory("Jackets");
 
   @override
   Widget build(BuildContext context) {
@@ -400,26 +406,26 @@ class PopularProducts extends StatelessWidget {
       margin: const EdgeInsets.all(20),
       child: Column(
         children: [
-          const Row(
+           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Most Popular",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              Text("View All >")
+              GestureDetector(child: Text("View All >"), onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductsPage(),
+                ),
+              ),)
             ],
           ),
           const SizedBox(
             height: 20,
           ),
           CarouselSlider(
-            items: [
-              "assets/images/jacket1.jpeg",
-              "assets/images/jacket2.jpeg",
-              "assets/images/jacket3.jpeg",
-              "assets/images/jacket4.jpeg"
-            ].map((i) {
+            items: getJackets.map((product) {
               return Container(
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey, width: 1.0),
@@ -430,19 +436,19 @@ class PopularProducts extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset(
-                      i,
+                      product.imagePath,
                       width: MediaQuery.of(context).size.width,
                       fit: BoxFit.cover,
                       height: 200,
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 5.0),
-                      child: Text("Jacket"),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5.0),
+                      child: Text(product.name),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 5.0),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5.0),
                       child: Text(
-                        "P12,092",
+                        "₱" + product.price.toString(),
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -535,14 +541,22 @@ class PopularItemSection extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   "Popular Items",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Text("View All >")
+                GestureDetector(
+                  child: const Text("View All >"),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductsPage(),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
