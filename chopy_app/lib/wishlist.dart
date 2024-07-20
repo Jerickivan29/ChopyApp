@@ -9,7 +9,7 @@ class Wishlist extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 113, 201, 206),
+        backgroundColor: Color.fromARGB(255, 255, 243, 224),
         title: Row(
           children: [
             GestureDetector(

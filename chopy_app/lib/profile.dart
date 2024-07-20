@@ -14,6 +14,7 @@ class Profile extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 255, 243, 224),
         leading: IconButton(
           icon: Icon(Icons.chevron_left),
           onPressed: () {

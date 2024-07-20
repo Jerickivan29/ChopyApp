@@ -10,7 +10,7 @@ class Categories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 113, 201, 206),
+        backgroundColor: const Color.fromARGB(255, 255, 243, 224),
         title: Row(
           children: [
             GestureDetector(
@@ -36,10 +36,10 @@ class Categories extends StatelessWidget {
         child: Column(
           children: [
             CategorySection(),
-            OtherCategories(imagePath: 'assets/images/categ2.jpg', title: 'Sweatshirts', subtitle: 'Collections', buttonColor: Colors.blue,),
-            OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Cap', subtitle: 'Collections', buttonColor: Colors.blue,),
-            OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Jackets', subtitle: 'Collections', buttonColor: Colors.blue,),
-            OtherCategories(imagePath: 'assets/images/car1.jpg', title: 'Tshirts', subtitle: 'Collections', buttonColor: Colors.blue,),
+            OtherCategories(imagePath: 'assets/images/categ2.jpg', title: 'Sweatshirts', subtitle: 'Collections', buttonColor: Color.fromARGB(255, 237, 54, 22),),
+            OtherCategories(imagePath: 'assets/images/cap.jpg', title: 'Cap', subtitle: 'Collections', buttonColor: Color.fromARGB(255, 44, 5, 237),),
+            OtherCategories(imagePath: 'assets/images/pink.jpg', title: 'Jackets', subtitle: 'Collections', buttonColor: Color.fromARGB(255, 103, 1, 114),),
+            OtherCategories(imagePath: 'assets/images/shirt1.jpg', title: 'Tshirts', subtitle: 'Collections', buttonColor: Color.fromARGB(255, 1, 109, 37),),
           ],
         ),
       ),
@@ -167,19 +167,19 @@ class CategorySection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CategoryItem(
-                image: "assets/images/home_category1.jpg",
+                image: "assets/images/mobile.jpg",
                 category: "Mobiles",
               ),
               CategoryItem(
-                image: "assets/images/home_category2.jpg",
+                image: "assets/images/electronics.jpg",
                 category: "Electronics",
               ),
               CategoryItem(
-                image: "assets/images/car1.jpg",
+                image: "assets/images/fashion.jpg",
                 category: "Fashion",
               ),
               CategoryItem(
-                image: "assets/images/car2.jpg",
+                image: "assets/images/furniture.jpg",
                 category: "Furniture",
               ),
             ],
@@ -191,20 +191,20 @@ class CategorySection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const CategoryItem(
-                image: "assets/images/home_category1.jpg",
+                image: "assets/images/grocery.jpeg",
                 category: "Grocery",
               ),
               const CategoryItem(
-                image: "assets/images/home_category2.jpg",
+                image: "assets/images/toys.jpg",
                 category: "Toys",
               ),
               const CategoryItem(
-                image: "assets/images/car1.jpg",
+                image: "assets/images/appliances.jpg",
                 category: "Appliances",
               ),
               CategoryItem(
-                image: "assets/images/car3.jpg",
-                category: "Fashion",
+                image: "assets/images/rolex.jpg",
+                category: "Accessories",
               ),
             ],
           ),

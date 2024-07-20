@@ -66,7 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color.fromARGB(255, 113, 201, 206),
+        backgroundColor: const Color.fromARGB(255, 255, 243, 224),
+        selectedItemColor: const Color.fromARGB(255, 249, 175, 35),
         items: const [
           BottomNavigationBarItem(
             label: "Home",

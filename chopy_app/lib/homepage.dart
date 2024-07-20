@@ -9,7 +9,7 @@ class Homepage extends StatelessWidget {
 
   const Homepage({super.key, required this.onCategoryTap});
 
-  final Color bgNavColor = const Color.fromARGB(255, 113, 201, 206);
+  final Color bgNavColor = const Color.fromARGB(255, 255, 243, 224);
 
   @override
   Widget build(BuildContext context) {
@@ -82,14 +82,12 @@ class Homepage extends StatelessWidget {
                       Text(
                         'Your Name',
                         style: TextStyle(
-                          color: Colors.white,
                           fontSize: 18,
                         ),
                       ),
                       Text(
                         'Your Email',
                         style: TextStyle(
-                          color: Colors.white,
                           fontSize: 14,
                         ),
                       ),
@@ -101,11 +99,11 @@ class Homepage extends StatelessWidget {
             ListTile(
               leading: Icon(
                 Icons.home,
-                color: bgNavColor,
+                color: Color.fromARGB(255, 249, 175, 35),
               ),
               title: Text(
                 'Home',
-                style: TextStyle(color: bgNavColor),
+                style: TextStyle(color: Color.fromARGB(255, 249, 175, 35)),
               ),
             ),
             GestureDetector(
@@ -213,7 +211,7 @@ class HomeCategories extends StatelessWidget {
                 category: "Appliances",
               ),
               CategoryItem(
-                image: "assets/images/three-dots.png",
+                image: "assets/images/more.jpg",
                 category: "More",
                 onTap: () => onCategoryTap(1),
               ),
@@ -237,8 +235,6 @@ class CategoryItem extends StatelessWidget {
     this.onTap,
   });
 
-  final Color bgNavColor = Colors.blue;
-
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
@@ -249,7 +245,7 @@ class CategoryItem extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(color: bgNavColor, width: 2),
+            border: Border.all(color: Colors.grey, width: 2),
           ),
           child: CircleAvatar(
             radius: (deviceWidth / 4) * 0.5 - 15,

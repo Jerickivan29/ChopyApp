@@ -24,7 +24,7 @@ class ProductsPage extends StatelessWidget {
                   ),
                 ),
             ),
-            const Text('All Categories'),
+            const Text('All Products'),
           ],
         ),
         automaticallyImplyLeading: false,
