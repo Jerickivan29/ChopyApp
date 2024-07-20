@@ -15,3 +15,7 @@ List<ProductList> products = [
   const ProductList(name: "Pencil", category: "school", description: "dhfksdjh ", price: 2000),
   const ProductList(name: "Paper", category: "school", description: "dhfksdjh ", price: 2000),
 ];
+
+List<ProductList> getProductByCategory(String category) {
+  return products.where((product) => product.category == category).toList();
+}

@@ -86,6 +86,15 @@ flutter:
     - assets/images/phone.jpg
     - assets/images/laptop1.jpg
     - assets/images/headphone.jpg
+    - assets/images/shopcart.jpg
+    - assets/images/blue.jpg
+    - assets/images/blue1.jpg
+    - assets/images/fan.jpg
+    - assets/images/samsung.jpeg
+    - assets/images/laptop2.jpeg
+    - assets/images/iphone3.jpeg
+    - assets/images/wire.jpg
+    - assets/images/laptop3.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

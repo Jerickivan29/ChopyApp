@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class Homepage extends StatelessWidget {
   final Function(int) onCategoryTap;
@@ -55,6 +56,7 @@ class Homepage extends StatelessWidget {
           const PopularProducts(),
           const DiscountedProducts(),
           const PopularItemSection(),
+          const TopSelectionSection(),
         ]),
       ),
       drawer: Drawer(
@@ -241,11 +243,47 @@ class CategoryItem extends StatelessWidget {
   }
 }
 
-class SalesBanner extends StatelessWidget {
-  const SalesBanner({super.key});
+class SalesBanner extends StatefulWidget {
+  const SalesBanner({Key? key}) : super(key: key);
+
+  @override
+  _SalesBannerState createState() => _SalesBannerState();
+}
+
+class _SalesBannerState extends State<SalesBanner> {
+  late Timer _timer;
+  Duration _duration = Duration(hours: 14, minutes: 38, seconds: 21);
+
+  @override
+  void initState() {
+    super.initState();
+    _startCountdown();
+  }
+
+  void _startCountdown() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (_duration.inSeconds <= 0) {
+        timer.cancel();
+      } else {
+        setState(() {
+          _duration = _duration - Duration(seconds: 1);
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final hours = _duration.inHours.toString().padLeft(2, '0');
+    final minutes = (_duration.inMinutes % 60).toString().padLeft(2, '0');
+    final seconds = (_duration.inSeconds % 60).toString().padLeft(2, '0');
+
     return Padding(
       padding: const EdgeInsets.all(0),
       child: Container(
@@ -266,16 +304,14 @@ class SalesBanner extends StatelessWidget {
             Positioned.fill(
               child: ClipRRect(
                 child: Image.asset(
-                  "assets/images/car1.jpg",
+                  "assets/images/blue1.jpg",
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-            Positioned.fill(
-              child: Container(),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(16),
+            
+            Padding(
+              padding: const EdgeInsets.all(16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -292,12 +328,10 @@ class SalesBanner extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 4),
-                      Text(
-                        "14hrs 02Mins 55Secs",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.white,
-                        ),
+                      CountdownText(
+                        hours: hours,
+                        minutes: minutes,
+                        seconds: seconds,
                       ),
                     ],
                   ),
@@ -306,6 +340,30 @@ class SalesBanner extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CountdownText extends StatelessWidget {
+  final String hours;
+  final String minutes;
+  final String seconds;
+
+  const CountdownText({
+    Key? key,
+    required this.hours,
+    required this.minutes,
+    required this.seconds,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "$hours" + "hrs " + "$minutes" + "Mins " + "$seconds" + "Secs",
+      style: TextStyle(
+        fontSize: 14,
+        color: Colors.white,
       ),
     );
   }
@@ -401,10 +459,10 @@ class DiscountedProducts extends StatelessWidget {
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          DiscountedProductItem("Headphones",
-              "assets/images/headphone.jpg", "Up to 80% off"),
-          DiscountedProductItem("Mobile Phones",
-              "assets/images/phone.jpg", "Up to 50% off"),
+          DiscountedProductItem(
+              "Headphones", "assets/images/headphone.jpg", "Up to 80% off"),
+          DiscountedProductItem(
+              "Mobile Phones", "assets/images/phone.jpg", "Up to 50% off"),
           DiscountedProductItem(
               "Laptops", "assets/images/laptop1.jpg", "Up to 30% off"),
         ],
@@ -448,21 +506,45 @@ class PopularItemSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+      margin: const EdgeInsets.symmetric(
+        vertical: 20,
+      ),
       child: Column(
         children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Popular Items",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              Text("View All >")
-            ],
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Popular Items",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text("View All >")
+              ],
+            ),
           ),
-          PopularItem("Swing fan", "P2000", "assets/images/home_category1.jpg",
-              "P1299", "400mm, Blue tone", "20% off")
+          const PopularItem(
+              "Swing fan",
+              "P2000",
+              "assets/images/fan.jpg",
+              "P1299",
+              "400mm, Blue tone",
+              "20% off"),
+          const PopularItem(
+              "Oneplus Nord",
+              "P2000",
+              "assets/images/samsung.jpeg",
+              "P1299",
+              "400mm, Blue tone",
+              "20% off"),
+          const PopularItem(
+              "sdfdsd fan",
+              "P2000",
+              "assets/images/laptop2.jpeg",
+              "P1299",
+              "400mm, Blue tone",
+              "20% off"),
         ],
       ),
     );
@@ -484,6 +566,11 @@ class PopularItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+      decoration: BoxDecoration(
+          border: Border(
+              bottom:
+                  BorderSide(width: 1.0, color: Colors.grey.withOpacity(0.5)))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -514,16 +601,126 @@ class PopularItem extends StatelessWidget {
                   ),
                   SizedBox(width: 5),
                   Text(price),
-                    SizedBox(width: 3),
+                  SizedBox(width: 3),
                   Text(discountedPrice)
                 ],
               )
             ],
           ),
-          const CircleAvatar(
-            radius: 30,
-            backgroundImage: AssetImage("assets/images/ID_PIC.jpg"),
+          const Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              CircleAvatar(
+                radius: 25,
+                backgroundImage: AssetImage("assets/images/shopcart.jpg"),
+              ),
+            ],
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class TopSelectionSection extends StatelessWidget {
+  const TopSelectionSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+      decoration: BoxDecoration(color: Colors.black.withOpacity(0.8)),
+      width: MediaQuery.of(context).size.width,
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Top Selection",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TopSelectionItem(
+                "assets/images/wire.jpg",
+                "Wired earphones",
+                "upto 50% off",
+              ),
+              TopSelectionItem(
+                "assets/images/iphone3.jpeg",
+                "Top Mobiles",
+                "upto 50% off",
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TopSelectionItem(
+                "assets/images/headphone.jpg",
+                "Wired earphones",
+                "upto 50% off",
+              ),
+              TopSelectionItem(
+                "assets/images/laptop3.jpeg",
+                "Wired earphones",
+                "upto 50% off",
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TopSelectionItem extends StatelessWidget {
+  const TopSelectionItem(this.image, this.name, this.discount, {super.key});
+  final String image;
+  final String name;
+  final String discount;
+
+  @override
+  Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double containerWidth = (deviceWidth / 2) - 20;
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(10.0),
+              topRight: Radius.circular(10.0),
+            ),
+            child: Image.asset(
+              image,
+              width: containerWidth,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Container(
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10))),
+              width: containerWidth,
+              child: Column(
+                children: [
+                  Text(name,
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Text(discount, style: const TextStyle(color: Colors.grey)),
+                ],
+              )),
         ],
       ),
     );
