@@ -101,6 +101,14 @@ flutter:
     - assets/images/pink.jpg
     - assets/images/rolex.jpg
     - assets/images/more.jpg
+    - assets/images/logo1.png
+    - assets/images/accessories1.jpeg
+    - assets/images/appliances1.jpeg
+    - assets/images/cap1.jpeg
+    - assets/images/cp1.jpg
+    - assets/images/damit1.jpeg
+    - assets/images/electronics1.jpg
+    - assets/images/fashion1.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
