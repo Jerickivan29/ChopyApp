@@ -103,13 +103,50 @@ flutter:
     - assets/images/more.jpg
     - assets/images/logo1.png
     - assets/images/accessories1.jpeg
+    - assets/images/accessories2.jpeg
+    - assets/images/accessories3.jpeg
     - assets/images/appliances1.jpeg
+    - assets/images/appliances2.jpeg
+    - assets/images/appliances3.jpeg
+    - assets/images/appliances3.jpeg
     - assets/images/cap1.jpeg
+    - assets/images/cap2.jpeg
+    - assets/images/cap3.jpeg
     - assets/images/cp1.jpg
+    - assets/images/cp2.jpg
+    - assets/images/cp3.jpeg
     - assets/images/damit1.jpeg
+    - assets/images/damit2.jpeg
+    - assets/images/damit3.jpeg
     - assets/images/electronics1.jpg
+    - assets/images/electronics2.jpg
+    - assets/images/electronics3.jpg
     - assets/images/fashion1.png
+    - assets/images/fashion2.jpeg
+    - assets/images/fashion3.jpeg
+    - assets/images/grocery1.jpeg
+    - assets/images/grocery2.jpeg
+    - assets/images/grocery3.jpeg
+    - assets/images/hood1.jpeg
+    - assets/images/hood2.jpeg
+    - assets/images/hood3.jpeg
+    - assets/images/sweatshirt1.jpeg
+    - assets/images/sweatshirt2.jpeg
+    - assets/images/sweatshirt3.jpeg
+    - assets/images/toys1.jpeg
+    - assets/images/toys2.jpeg
+    - assets/images/toys3.jpeg
+    - assets/images/furniture1.jpeg
+    - assets/images/furniture2.jpeg
+    - assets/images/furniture3.jpeg
 
+
+
+
+
+    
+
+    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

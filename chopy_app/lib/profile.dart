@@ -1,3 +1,6 @@
+import 'package:chopy_app/cart.dart';
+import 'package:chopy_app/coupons.dart';
+import 'package:chopy_app/orders.dart';
 import 'package:flutter/material.dart';
 
 
@@ -12,9 +15,31 @@ class Profile extends StatelessWidget {
 
     final buttonSize = screenWidth < 600 ? Size(120, 120) : Size(150, 150);
 
+    final List<Map<String, dynamic>> buttonItems = [
+      {'text': 'Order', 'icon': Icons.add_box_outlined},
+      {'text': 'Wishlist', 'icon': Icons.settings},
+      {'text': 'Messages', 'icon': Icons.message},
+      {'text': 'Notifications', 'icon': Icons.notifications},
+    ];
+
+    final List<void Function()> buttonActions = [
+      () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => OrdersPage()),
+      ),
+      () => onBackTap(2), 
+      () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => CouponsPage()),
+      ),
+      () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => CartPage()),
+      ),
+    ];
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 243, 224),
         leading: IconButton(
           icon: Icon(Icons.chevron_left),
           onPressed: () {
@@ -25,22 +50,24 @@ class Profile extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.more_vert),
-            onPressed: () {
-            },
+            onPressed: () {},
           ),
         ],
-      automaticallyImplyLeading: false,),
+        automaticallyImplyLeading: false,
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
               ProfileSection(),
-              SizedBox(height: 30), // Add space between profile and buttons 
-              BoxSection('Order', Icons.add_box_outlined, 'Wishlist', Icons.favorite_border_outlined, buttonSize),// Pass buttonSize to BoxSection
-              SizedBox(height: 16), // Add space between rows
-              BoxSection('Coupons', Icons.card_giftcard, 'Help Center', Icons.headphones, buttonSize), // Pass buttonSize to BoxSection
-              SizedBox(height: 30), // Add space before account settings
+              SizedBox(height: 30),
+              BoxSection(
+                buttonSize: buttonSize,
+                items: buttonItems,
+                onPressedCallbacks: buttonActions,
+              ),
+              SizedBox(height: 30),
               AccountSet(),
             ],
           ),
@@ -49,6 +76,8 @@ class Profile extends StatelessWidget {
     );
   }
 }
+
+
 
 class ProfileSection extends StatelessWidget {
   const ProfileSection({super.key});
@@ -101,59 +130,48 @@ class ProfileSection extends StatelessWidget {
 
 class BoxSection extends StatelessWidget {
   final Size buttonSize;
-  final String ftext;
-  final IconData ficon;
-  final String stext;
-  final IconData sicon;
+  final List<Map<String, dynamic>> items;
+  final List<void Function()> onPressedCallbacks; // List of functions to call on button press
 
-
-  const BoxSection(this.ftext, this.ficon, this.stext, this.sicon, this.buttonSize, {super.key,});
+  const BoxSection({
+    super.key,
+    required this.buttonSize,
+    required this.items,
+    required this.onPressedCallbacks,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        ElevatedButton(
-          onPressed: () {
-          },
-          style: ElevatedButton.styleFrom(
-            minimumSize: buttonSize,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+    return Wrap(
+      spacing: 16.0, // Horizontal spacing between items
+      runSpacing: 16.0, // Vertical spacing between rows
+      children: List.generate(items.length, (index) {
+        return SizedBox(
+          width: buttonSize.width,
+          height: buttonSize.height,
+          child: ElevatedButton(
+            onPressed: onPressedCallbacks[index],
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(items[index]['icon'], size: 40, color: Colors.pink),
+                SizedBox(height: 8),
+                Text(items[index]['text']),
+              ],
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(ficon, size: 40, color: Colors.pink), 
-              SizedBox(height: 8), 
-              Text(ftext),
-            ],
-          ),
-        ),
-        ElevatedButton(
-          onPressed: () {
-          },
-          style: ElevatedButton.styleFrom(
-            minimumSize: buttonSize, 
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(sicon, size: 40, color: Colors.pink), 
-              SizedBox(height: 8),
-              Text(stext),
-            ],
-          ),
-        ),
-      ],
+        );
+      }),
     );
   }
 }
+
+
 
 class AccountSet extends StatelessWidget {
   const AccountSet({super.key});
