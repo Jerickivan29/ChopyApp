@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:chopy_app/login.dart';
+import 'package:chopy_app/single_product.dart';
 import 'package:flutter/material.dart';
 import 'package:chopy_app/products_page.dart';
 import 'package:chopy_app/products_category.dart';
@@ -406,19 +407,22 @@ class PopularProducts extends StatelessWidget {
       margin: const EdgeInsets.all(20),
       child: Column(
         children: [
-           Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Most Popular",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              GestureDetector(child: Text("View All >"), onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ProductsPage(),
+              GestureDetector(
+                child: Text("View All >"),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductsPage(),
+                  ),
                 ),
-              ),)
+              )
             ],
           ),
           const SizedBox(
@@ -426,34 +430,48 @@ class PopularProducts extends StatelessWidget {
           ),
           CarouselSlider(
             items: getJackets.map((product) {
-              return Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey, width: 1.0),
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset(
-                      product.imagePath,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.cover,
-                      height: 200,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: Text(product.name),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: Text(
-                        "₱" + product.price.toString(),
-                        style: TextStyle(fontWeight: FontWeight.bold),
+              return GestureDetector(
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey, width: 1.0),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(5.0),
+                          topRight: Radius.circular(5.0),
+                        ),
+                        child: Image.asset(
+                          product.imagePath,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover,
+                          height: 200,
+                        ),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.only(left: 5.0),
+                        child: Text(product.name),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 5.0),
+                        child: Text(
+                          "₱" + product.price.toString(),
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SingleProduct(product),
+                    ),
+                  ),
               );
             }).toList(),
             options: CarouselOptions(
