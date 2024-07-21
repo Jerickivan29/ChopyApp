@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:chopy_app/homepage.dart';
+import 'package:chopy_app/products_category.dart';
 
 class Categories extends StatelessWidget {
   final Function(int) onBackTap;
@@ -127,7 +128,14 @@ class OtherCategories extends StatelessWidget {
                       const SizedBox(height: 8),
                       ElevatedButton(
                         onPressed: () {
-                          
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProductsCategory(title),
+              ),
+            );
+
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: buttonColor,
