@@ -258,6 +258,81 @@ List<ProductList> products = [
       discountedPrice: 1500,
       imagePath: "assets/images/toys3.jpeg",
       percent: "15"),
+      //Sweatshirts
+    const ProductList(
+      name: "Green Sweatshirts",
+      category: "Sweatshirts",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      price: 2000,
+      discountedPrice: 1500,
+      imagePath: "assets/images/sweatshirt1.jpeg",
+      percent: "15"),
+    const ProductList(
+      name: "Peach Sweatshirts",
+      category: "Sweatshirts",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      price: 2000,
+      discountedPrice: 1500,
+      imagePath: "assets/images/sweatshirt2.jpeg",
+      percent: "15"),
+    const ProductList(
+      name: "Grey Sweatshirts",
+      category: "Sweatshirts",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      price: 2000,
+      discountedPrice: 1500,
+      imagePath: "assets/images/sweatshirt3.jpeg",
+      percent: "15"),
+      //Cap
+    const ProductList(
+      name: "NYC Cap",
+      category: "Cap",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      price: 2000,
+      discountedPrice: 1500,
+      imagePath: "assets/images/cap1.jpeg",
+      percent: "15"),
+    const ProductList(
+      name: "Black Cap",
+      category: "Cap",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      price: 2000,
+      discountedPrice: 1500,
+      imagePath: "assets/images/cap2.jpeg",
+      percent: "15"),
+    const ProductList(
+      name: "Vintage Cap",
+      category: "Cap",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      price: 2000,
+      discountedPrice: 1500,
+      imagePath: "assets/images/cap3.jpeg",
+      percent: "15"),
+      //Tshirts
+    const ProductList(
+      name: "Cat Tshirts",
+      category: "Tshirts",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      price: 2000,
+      discountedPrice: 1500,
+      imagePath: "assets/images/damit1.jpeg",
+      percent: "15"),
+    const ProductList(
+      name: "Moon-Eagle Tshirts",
+      category: "Tshirts",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      price: 2000,
+      discountedPrice: 1500,
+      imagePath: "assets/images/damit2.jpeg",
+      percent: "15"),
+    const ProductList(
+      name: "Star Tshirts",
+      category: "Tshirts",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      price: 2000,
+      discountedPrice: 1500,
+      imagePath: "assets/images/damit3.jpeg",
+      percent: "15"),
 
 
     
