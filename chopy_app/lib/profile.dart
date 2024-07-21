@@ -18,8 +18,8 @@ class Profile extends StatelessWidget {
     final List<Map<String, dynamic>> buttonItems = [
       {'text': 'Order', 'icon': Icons.add_box_outlined},
       {'text': 'Wishlist', 'icon': Icons.settings},
-      {'text': 'Messages', 'icon': Icons.message},
-      {'text': 'Notifications', 'icon': Icons.notifications},
+      {'text': 'Coupons', 'icon': Icons.card_giftcard},
+      {'text': 'Cart', 'icon': Icons.shopping_cart},
     ];
 
     final List<void Function()> buttonActions = [
@@ -100,7 +100,7 @@ class ProfileSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Thomas Djono',
+                    'User1020',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -108,7 +108,7 @@ class ProfileSection extends StatelessWidget {
                   ),
                   SizedBox(height: 4),
                   Text(
-                    'ID 02123141',
+                    'ID: 02123141',
                     style: TextStyle(
                       color: Colors.grey[600],
                     ),
