@@ -85,13 +85,13 @@ class Homepage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Your Name',
+                        'User Account',
                         style: TextStyle(
                           fontSize: 18,
                         ),
                       ),
                       Text(
-                        'Your Email',
+                        'admin@gmail.com',
                         style: TextStyle(
                           fontSize: 14,
                         ),

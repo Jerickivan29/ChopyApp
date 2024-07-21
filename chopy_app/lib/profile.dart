@@ -2,6 +2,7 @@ import 'package:chopy_app/cart.dart';
 import 'package:chopy_app/coupons.dart';
 import 'package:chopy_app/orders.dart';
 import 'package:flutter/material.dart';
+import 'package:chopy_app/login.dart';
 
 
 class Profile extends StatelessWidget {
@@ -100,7 +101,7 @@ class ProfileSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'User1020',
+                    'User Account',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -206,6 +207,10 @@ class AccountSet extends StatelessWidget {
         SizedBox(height: 12),
         ElevatedButton(
           onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => Login()),
+            );
           },
           style: ElevatedButton.styleFrom(
             minimumSize: Size(double.infinity, 50),
