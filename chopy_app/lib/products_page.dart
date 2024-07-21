@@ -89,7 +89,7 @@ class ProductTile extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Text(product.discountedPrice.toString(),
+                        Text("₱${product.discountedPrice.toString()}",
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
@@ -98,7 +98,7 @@ class ProductTile extends StatelessWidget {
                           width: 5,
                         ),
                         Text(
-                          product.price.toString(),
+                          "₱${product.price.toString()}",
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 12,
@@ -112,7 +112,7 @@ class ProductTile extends StatelessWidget {
               ],
             ),
             Text(
-              "${product.percent} OFF",
+              "${product.percent}% OFF",
             )
           ],
         ),

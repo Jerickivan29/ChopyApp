@@ -1,6 +1,7 @@
 import 'package:chopy_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:chopy_app/product_list.dart';
+import 'package:chopy_app/order_list.dart';
 import 'package:chopy_app/single_product.dart';
 
 class OrdersPage extends StatelessWidget {
@@ -8,7 +9,7 @@ class OrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<ProductList> allProducts = products;
+    List<ProductList> allProducts = ordersList;
 
     return Scaffold(
       appBar: AppBar(
@@ -70,12 +71,46 @@ class OrderTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
-                  children: [Text("#122567"), Text(product.name)],
-                ), Image.asset(product.imagePath, width: 50,)
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "#122567",
+                      style: TextStyle(color: Colors.blue, fontSize: 12),
+                    ),
+                    Text(
+                      product.name,
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),Text("Quantity: 1", style: TextStyle(fontSize: 12),)
+                  ],
+                ),
+                Image.asset(
+                  product.imagePath,
+                  width: 50,
+                )
               ],
             ),
-          Row(children: [],)],
-          
+            SizedBox(
+              height: 5,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 3),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(width: 1, color: Colors.green)),
+                  child: Text(
+                    "Completed",
+                    style: TextStyle(color: Colors.green),
+                  ),
+                ),
+                Text("Price: ₱${product.discountedPrice}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),)
+              ],
+            )
+          ],
         ),
       ),
     );

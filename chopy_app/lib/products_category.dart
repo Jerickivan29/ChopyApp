@@ -1,4 +1,3 @@
-import 'package:chopy_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:chopy_app/product_list.dart';
 import 'package:chopy_app/single_product.dart';
@@ -21,12 +20,7 @@ class ProductsCategory extends StatelessWidget {
                 Icons.chevron_left,
                 size: 30,
               ),
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MyHomePage(),
-                ),
-              ),
+              onTap: () => Navigator.pop(context),
             ),
             Text(category),
           ],

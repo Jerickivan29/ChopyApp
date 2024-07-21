@@ -1,6 +1,8 @@
+import 'package:chopy_app/orders.dart';
 import 'package:chopy_app/product_list.dart';
 import 'package:chopy_app/cart_list.dart';
 import 'package:flutter/material.dart';
+import 'package:chopy_app/order_list.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -38,7 +40,9 @@ class CartPage extends StatelessWidget {
                     margin: EdgeInsets.symmetric(horizontal: 15),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [for (var product in products) CartItem(product)],
+                      children: [
+                        for (var product in products) CartItem(product)
+                      ],
                     ),
                   ),
                 ),
@@ -64,24 +68,32 @@ class CartPage extends StatelessWidget {
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold)),
                               const SizedBox(width: 5),
-                              
                             ],
                           ),
                         ],
                       ),
-                      Container(
-                        padding: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 249, 175, 35),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
+                      GestureDetector(
+                         onTap: () {
+                          orderProducts(products: cartList);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => OrdersPage()),
+                          );
+                        },
                         child: Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 10),
-                            child: Text("Add Cart",
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold))),
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 249, 175, 35),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 10),
+                              child: Text("Checkout",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold))),
+                        ),
                       ),
                     ],
                   ),
@@ -120,23 +132,30 @@ class CartItem extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(product.name, style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16),),
+              Text(
+                product.name,
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
               SizedBox(height: 8),
               Row(
                 children: [
-                  Text("₱${product.discountedPrice.toString()}",  style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            )),
+                  Text("₱${product.discountedPrice.toString()}",
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      )),
                   SizedBox(
                     width: 5,
                   ),
-                  Text("₱${product.price.toString()}",  style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
-                            decoration: TextDecoration.lineThrough,
-                          ),),
+                  Text(
+                    "₱${product.price.toString()}",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                      decoration: TextDecoration.lineThrough,
+                    ),
+                  ),
                 ],
               )
             ],

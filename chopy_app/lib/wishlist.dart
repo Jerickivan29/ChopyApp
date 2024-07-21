@@ -40,13 +40,13 @@ class Wishlist extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: const [
-            WishlistProduct(imageProduct: 'assets/images/accessories1.jpeg', category: 'Accessories', name: 'Sunglass', desc: 'Latest model with amazing features', price: '\$799.99',),
-            WishlistProduct(imageProduct: 'assets/images/appliances1.jpeg', category: 'Appliances', name: 'Vaporizador', desc: 'Latest model with amazing features', price: '\$799.99',),
-            WishlistProduct(imageProduct: 'assets/images/cap1.jpeg', category: 'Fashion', name: 'New Era', desc: 'Latest model with amazing features', price: '\$799.99',),
-            WishlistProduct(imageProduct: 'assets/images/cp1.jpg', category: 'Mobiles', name: 'Smartphone', desc: 'Latest model with amazing features', price: '\$799.99',),
-            WishlistProduct(imageProduct: 'assets/images/damit1.jpeg', category: 'Fasjion', name: 'T-shirt', desc: 'Latest model with amazing features', price: '\$799.99',),
-            WishlistProduct(imageProduct: 'assets/images/electronics1.jpg', category: 'Electronics', name: 'Power Bank', desc: 'Latest model with amazing features', price: '\$799.99',),
-            WishlistProduct(imageProduct: 'assets/images/fashion1.png', category: 'Fashion', name: 'Nike Air Force', desc: 'Latest model with amazing features', price: '\$799.99',),
+            WishlistProduct(imageProduct: 'assets/images/accessories1.jpeg', category: 'Accessories', name: 'Sunglass', desc: 'Latest model with amazing features', price: '\₱799.99',),
+            WishlistProduct(imageProduct: 'assets/images/appliances1.jpeg', category: 'Appliances', name: 'Vaporizador', desc: 'Latest model with amazing features', price: '\₱799.99',),
+            WishlistProduct(imageProduct: 'assets/images/cap1.jpeg', category: 'Fashion', name: 'New Era', desc: 'Latest model with amazing features', price: '\₱799.99',),
+            WishlistProduct(imageProduct: 'assets/images/cp1.jpg', category: 'Mobiles', name: 'Smartphone', desc: 'Latest model with amazing features', price: '\₱799.99',),
+            WishlistProduct(imageProduct: 'assets/images/damit1.jpeg', category: 'Fasjion', name: 'T-shirt', desc: 'Latest model with amazing features', price: '\₱799.99',),
+            WishlistProduct(imageProduct: 'assets/images/electronics1.jpg', category: 'Electronics', name: 'Power Bank', desc: 'Latest model with amazing features', price: '\₱799.99',),
+            WishlistProduct(imageProduct: 'assets/images/fashion1.png', category: 'Fashion', name: 'Nike Air Force', desc: 'Latest model with amazing features', price: '\₱799.99',),
           ],
         ),
       ),

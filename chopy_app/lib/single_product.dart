@@ -126,7 +126,7 @@ class SingleProduct extends StatelessWidget {
                           child: Container(
                               padding: EdgeInsets.symmetric(
                                   vertical: 5, horizontal: 10),
-                              child: Text("Add Cart",
+                              child: Text("Add to Cart",
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold))),

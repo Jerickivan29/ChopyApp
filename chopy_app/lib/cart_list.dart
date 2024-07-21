@@ -40,3 +40,4 @@ void addProductToCart(ProductList product) {
 double calculateTotal() {
   return cartList.fold(0, (sum, item) => sum + item.discountedPrice);
 }
+
