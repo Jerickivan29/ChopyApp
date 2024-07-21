@@ -237,7 +237,7 @@ List<ProductList> products = [
     const ProductList(
       name: "White Bear",
       category: "Toys",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      description: "Lorem ipsum dolor sit amet",
       price: 2000,
       discountedPrice: 1500,
       imagePath: "assets/images/toys1.jpeg",
@@ -245,7 +245,7 @@ List<ProductList> products = [
     const ProductList(
       name: "Pink Bear",
       category: "Toys",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      description: "Lorem ipsum dolor sit ame ",
       price: 2000,
       discountedPrice: 1500,
       imagePath: "assets/images/toys2.jpeg",
@@ -253,7 +253,7 @@ List<ProductList> products = [
     const ProductList(
       name: "Brown Bear",
       category: "Toys",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      description: "Lorem ipsum dolor sit ",
       price: 2000,
       discountedPrice: 1500,
       imagePath: "assets/images/toys3.jpeg",
@@ -341,3 +341,40 @@ List<ProductList> products = [
 List<ProductList> getProductByCategory(String category) {
   return products.where((product) => product.category == category).toList();
 }
+
+List<ProductList> selection1 = [
+  const ProductList(
+      name: "Moon-Eagle Tshirts",
+      category: "Tshirts",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      price: 2000,
+      discountedPrice: 1500,
+      imagePath: "assets/images/damit2.jpeg",
+      percent: "15"),
+    const ProductList(
+      name: "Star Tshirts",
+      category: "Tshirts",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      price: 2000,
+      discountedPrice: 1500,
+      imagePath: "assets/images/damit3.jpeg",
+      percent: "15"),
+];
+List<ProductList> selection2 = [
+  const ProductList(
+      name: "Black Cap",
+      category: "Cap",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      price: 2000,
+      discountedPrice: 1500,
+      imagePath: "assets/images/cap2.jpeg",
+      percent: "15"),
+    const ProductList(
+      name: "Vintage Cap",
+      category: "Cap",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel egestas dolor, nec dignissim metus. Donec augue elit, rhoncus ac sodales id, porttitor vitae est. Donec laoreet rutrum libero sed pharetra. ",
+      price: 2000,
+      discountedPrice: 1500,
+      imagePath: "assets/images/cap3.jpeg",
+      percent: "15"),
+];

@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:chopy_app/cart.dart';
 import 'package:chopy_app/login.dart';
+import 'package:chopy_app/orders.dart';
 import 'package:chopy_app/single_product.dart';
 import 'package:flutter/material.dart';
 import 'package:chopy_app/products_page.dart';
@@ -7,7 +9,6 @@ import 'package:chopy_app/products_category.dart';
 import 'package:chopy_app/product_list.dart';
 import 'dart:async';
 
-import 'package:flutter/widgets.dart';
 
 class Homepage extends StatelessWidget {
   final Function(int) onCategoryTap;
@@ -125,25 +126,33 @@ class Homepage extends StatelessWidget {
                 );
               },
             ),
-            const ListTile(
-              leading: Icon(Icons.star),
-              title: Text('Featured'),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const OrdersPage(),
+                  ),
+                );
+              },
+              child: const ListTile(
+                leading: Icon(Icons.list_alt),
+                title: Text('Orders'),
+              ),
             ),
-            const ListTile(
-              leading: Icon(Icons.favorite),
-              title: Text('Wishlist'),
-            ),
-            const ListTile(
-              leading: Icon(Icons.list_alt),
-              title: Text('Orders'),
-            ),
-            const ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text('My Cart'),
-            ),
-            const ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CartPage(),
+                  ),
+                );
+              },
+              child: const ListTile(
+                leading: Icon(Icons.shopping_cart),
+                title: Text('My Cart'),
+              ),
             ),
             GestureDetector(
               child: const ListTile(
@@ -467,11 +476,11 @@ class PopularProducts extends StatelessWidget {
                   ),
                 ),
                 onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SingleProduct(product),
-                    ),
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SingleProduct(product),
                   ),
+                ),
               );
             }).toList(),
             options: CarouselOptions(
@@ -490,6 +499,8 @@ class DiscountedProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<ProductList> discountedProducts = getProductByCategory("Electronics");
+
     return Container(
       margin: EdgeInsets.symmetric(vertical: 20),
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
@@ -502,15 +513,10 @@ class DiscountedProducts extends StatelessWidget {
           bottom: BorderSide(width: 1.0, color: Colors.grey.withOpacity(0.5)),
         ),
       ),
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          DiscountedProductItem(
-              "Headphones", "assets/images/headphone.jpg", "Up to 80% off"),
-          DiscountedProductItem(
-              "Mobile Phones", "assets/images/phone.jpg", "Up to 50% off"),
-          DiscountedProductItem(
-              "Laptops", "assets/images/laptop1.jpg", "Up to 30% off"),
+          for (var product in discountedProducts) DiscountedProductItem(product)
         ],
       ),
     );
@@ -518,29 +524,40 @@ class DiscountedProducts extends StatelessWidget {
 }
 
 class DiscountedProductItem extends StatelessWidget {
-  const DiscountedProductItem(this.name, this.image, this.discountText,
-      {super.key});
+  const DiscountedProductItem(this.product, {super.key});
 
-  final String name;
-  final String image;
-  final String discountText;
+  final ProductList product;
 
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.black),
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SingleProduct(product),
+        ),
       ),
-      child: Column(
-        children: [
-          Image.asset(image, width: (deviceWidth / 3) - 20),
-          Text(name),
-          Text(discountText,
-              style: const TextStyle(fontWeight: FontWeight.bold)),
-        ],
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.black),
+        ),
+        child: Column(
+          children: [
+            ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(10.0),
+                  topRight: Radius.circular(10.0),
+                ),
+                child: Image.asset(product.imagePath,
+                    width: (deviceWidth / 3) - 20)),
+            Text(product.name),
+            Text("Up to ${product.percent}% Off",
+                style: const TextStyle(fontWeight: FontWeight.bold)),
+          ],
+        ),
       ),
     );
   }
@@ -551,6 +568,7 @@ class PopularItemSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<ProductList> items = getProductByCategory("Toys");
     return Container(
       margin: const EdgeInsets.symmetric(
         vertical: 20,
@@ -578,17 +596,7 @@ class PopularItemSection extends StatelessWidget {
               ],
             ),
           ),
-          const PopularItem("Swing fan", "P2000", "assets/images/fan.jpg",
-              "P1299", "400mm, Blue tone", "20% off"),
-          const PopularItem(
-              "Oneplus Nord",
-              "P2000",
-              "assets/images/samsung.jpeg",
-              "P1299",
-              "400mm, Blue tone",
-              "20% off"),
-          const PopularItem("sdfdsd fan", "P2000", "assets/images/laptop2.jpeg",
-              "P1299", "400mm, Blue tone", "20% off"),
+          for (var product in items) PopularItem(product)
         ],
       ),
     );
@@ -596,16 +604,9 @@ class PopularItemSection extends StatelessWidget {
 }
 
 class PopularItem extends StatelessWidget {
-  const PopularItem(this.name, this.price, this.image, this.discountedPrice,
-      this.shortDescription, this.percent,
-      {super.key});
+  const PopularItem(this.product, {super.key});
 
-  final String name;
-  final String image;
-  final String discountedPrice;
-  final String shortDescription;
-  final String price;
-  final String percent;
+  final ProductList product;
 
   @override
   Widget build(BuildContext context) {
@@ -619,46 +620,54 @@ class PopularItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.asset(
-            image,
+            product.imagePath,
             width: 100,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                name,
+                product.name,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.left,
               ),
               Text(
-                shortDescription,
+                product.description,
                 style: TextStyle(color: Colors.pink),
               ),
               SizedBox(height: 5),
               Row(
                 children: [
                   Text(
-                    percent,
+                    product.percent,
                     style: TextStyle(color: Colors.green),
                   ),
                   SizedBox(width: 5),
-                  Text(price),
+                  Text("₱${product.price.toString()}"),
                   SizedBox(width: 3),
-                  Text(discountedPrice)
+                  Text("₱${product.discountedPrice.toString()}")
                 ],
               )
             ],
           ),
-          const Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              CircleAvatar(
-                radius: 25,
-                backgroundImage: AssetImage("assets/images/shopcart.jpg"),
+          GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SingleProduct(product),
               ),
-            ],
+            ),
+            child: const Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                CircleAvatar(
+                  radius: 25,
+                  backgroundImage: AssetImage("assets/images/shopcart.jpg"),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -675,7 +684,7 @@ class TopSelectionSection extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       decoration: BoxDecoration(color: Colors.black.withOpacity(0.8)),
       width: MediaQuery.of(context).size.width,
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -688,16 +697,7 @@ class TopSelectionSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TopSelectionItem(
-                "assets/images/wire.jpg",
-                "Wired earphones",
-                "upto 50% off",
-              ),
-              TopSelectionItem(
-                "assets/images/iphone3.jpeg",
-                "Top Mobiles",
-                "upto 50% off",
-              ),
+              for (var product in selection1) TopSelectionItem(product),
             ],
           ),
           SizedBox(
@@ -706,16 +706,7 @@ class TopSelectionSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TopSelectionItem(
-                "assets/images/headphone.jpg",
-                "Wired earphones",
-                "upto 50% off",
-              ),
-              TopSelectionItem(
-                "assets/images/laptop3.jpeg",
-                "Wired earphones",
-                "upto 50% off",
-              ),
+              for (var product in selection2) TopSelectionItem(product),
             ],
           ),
         ],
@@ -725,47 +716,54 @@ class TopSelectionSection extends StatelessWidget {
 }
 
 class TopSelectionItem extends StatelessWidget {
-  const TopSelectionItem(this.image, this.name, this.discount, {super.key});
-  final String image;
-  final String name;
-  final String discount;
+  const TopSelectionItem(this.product, {super.key});
+  final ProductList product;
 
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
     double containerWidth = (deviceWidth / 2) - 20;
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5.0),
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SingleProduct(product),
+        ),
       ),
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(10.0),
-              topRight: Radius.circular(10.0),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(10.0),
+                topRight: Radius.circular(10.0),
+              ),
+              child: Image.asset(
+                product.imagePath,
+                width: containerWidth,
+                fit: BoxFit.cover,
+              ),
             ),
-            child: Image.asset(
-              image,
-              width: containerWidth,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
-                      bottomRight: Radius.circular(10))),
-              width: containerWidth,
-              child: Column(
-                children: [
-                  Text(name,
-                      style: const TextStyle(fontWeight: FontWeight.bold)),
-                  Text(discount, style: const TextStyle(color: Colors.grey)),
-                ],
-              )),
-        ],
+            Container(
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10))),
+                width: containerWidth,
+                child: Column(
+                  children: [
+                    Text(product.name,
+                        style: const TextStyle(fontWeight: FontWeight.bold)),
+                    Text("Up to ${product.percent}% off",
+                        style: const TextStyle(color: Colors.grey)),
+                  ],
+                )),
+          ],
+        ),
       ),
     );
   }

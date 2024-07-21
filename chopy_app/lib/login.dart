@@ -11,9 +11,9 @@ class Login extends StatelessWidget {
           title: Text('Login to Account'),
           backgroundColor: const Color.fromARGB(255, 255, 243, 224),
         ),
-        backgroundColor: const Color.fromARGB(255, 255, 243, 224), // Light background color
+        backgroundColor: const Color.fromARGB(255, 255, 243, 224), 
         body: Container(
-          constraints: BoxConstraints(maxWidth: 400), // Optional: to limit the width of the form
+          constraints: BoxConstraints(maxWidth: 400), 
           child: HomePage(),
         ),
       ),
@@ -49,10 +49,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, // Align children to the left
+        crossAxisAlignment: CrossAxisAlignment.start, 
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Center the logo
           Container(
             width: double.infinity,
             child: Column(
@@ -60,13 +59,12 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(height: 24.0),
                 Image.asset(
                   'assets/images/logo1.png',
-                  width: 250, // Replace with your asset path
+                  width: 250, 
                 ),
                 SizedBox(height: 24.0),
               ],
             ),
           ),
-          // Move the text to the left side
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
@@ -104,7 +102,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                     keyboardType: TextInputType.emailAddress,
                     onFieldSubmitted: (value) {
-                      // Validator
                     },
                     validator: (value) {
                       if (value == null ||
@@ -140,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 24.0),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 249, 175, 35), // Button color
+                      backgroundColor: Color.fromARGB(255, 249, 175, 35), 
                       padding: const EdgeInsets.symmetric(
                         vertical: 12.0,
                         horizontal: 32.0,

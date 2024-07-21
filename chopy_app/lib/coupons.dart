@@ -1,4 +1,3 @@
-import 'package:chopy_app/main.dart';
 import 'package:flutter/material.dart';
 
 class CouponsPage extends StatelessWidget {
@@ -16,15 +15,9 @@ class CouponsPage extends StatelessWidget {
                 Icons.chevron_left,
                 size: 30,
               ),
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MyHomePage(),
-                ),
-              ),
+              onTap: () => Navigator.pop(context),
             ),
-            SizedBox(width: 10), // Add spacing between the icon and the text
-            Text('Wish List'),
+            SizedBox(width: 10),
           ],
         ),
         actions: [
@@ -46,7 +39,7 @@ class CouponsPage extends StatelessWidget {
             CouponsSection(off_per: '15%', Type_category: 'Accesories', desc: 'On minimum purchase of Rs.', min_pay: '₱ 200'),
             CouponsSection(off_per: '15%', Type_category: 'Appliances', desc: 'On minimum purchase of Rs.', min_pay: '₱ 500'),
             CouponsSection(off_per: '50%', Type_category: 'Electronics', desc: 'On minimum purchase of Rs.', min_pay: '₱ 3,999'),
-            // Add more CouponsSection widgets here if needed
+            
           ],
         ),
       ),
@@ -101,7 +94,7 @@ class CouponsSection extends StatelessWidget {
             ),
           ),
           SizedBox(width: 10),
-          // Texts
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

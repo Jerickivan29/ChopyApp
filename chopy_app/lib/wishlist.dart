@@ -17,7 +17,7 @@ class Wishlist extends StatelessWidget {
                 Icons.chevron_left,
                 size: 30,
               ),
-              onTap: () => onBackTap(0),
+              onTap: () => onBackTap(3),
             ),
             Text('Wish List'),
           ],
@@ -82,7 +82,6 @@ class WishlistProduct extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Image with border radius
           Container(
             width: 80,
             height: 80,
@@ -95,7 +94,6 @@ class WishlistProduct extends StatelessWidget {
             ),
           ),
           SizedBox(width: 10),
-          // Texts
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

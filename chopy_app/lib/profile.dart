@@ -132,7 +132,7 @@ class ProfileSection extends StatelessWidget {
 class BoxSection extends StatelessWidget {
   final Size buttonSize;
   final List<Map<String, dynamic>> items;
-  final List<void Function()> onPressedCallbacks; // List of functions to call on button press
+  final List<void Function()> onPressedCallbacks; 
 
   const BoxSection({
     super.key,
@@ -144,8 +144,8 @@ class BoxSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: 16.0, // Horizontal spacing between items
-      runSpacing: 16.0, // Vertical spacing between rows
+      spacing: 16.0,
+      runSpacing: 16.0, 
       children: List.generate(items.length, (index) {
         return SizedBox(
           width: buttonSize.width,
