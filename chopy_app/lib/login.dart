@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 SizedBox(height: 24.0),
                 Image.asset(
-                  'assets/images/logo1.png',
+                  'assets/images/Choppybasket.png',
                   width: 250, 
                 ),
                 SizedBox(height: 24.0),

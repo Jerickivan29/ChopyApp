@@ -9,7 +9,6 @@ import 'package:chopy_app/products_category.dart';
 import 'package:chopy_app/product_list.dart';
 import 'dart:async';
 
-
 class Homepage extends StatelessWidget {
   final Function(int) onCategoryTap;
 
@@ -34,7 +33,14 @@ class Homepage extends StatelessWidget {
           ),
           IconButton(
             icon: const Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const CartPage(),
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -641,11 +647,11 @@ class PopularItem extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    product.percent,
+                    "${product.percent}%",
                     style: TextStyle(color: Colors.green),
                   ),
                   SizedBox(width: 5),
-                  Text("₱${product.price.toString()}"),
+                  Text("₱${product.price.toString()}", style: TextStyle(decoration: TextDecoration.lineThrough),),
                   SizedBox(width: 3),
                   Text("₱${product.discountedPrice.toString()}")
                 ],
